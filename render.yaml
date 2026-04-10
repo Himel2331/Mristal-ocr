@@ -1,0 +1,20 @@
+services:
+  - type: worker
+    name: mistral-telegram-ocr-bot
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.5
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: MISTRAL_API_KEY
+        sync: false
+      - key: MISTRAL_OCR_MODEL
+        value: mistral-ocr-latest
+      - key: MAX_FILE_MB
+        value: "19"
+      - key: LOG_LEVEL
+        value: INFO
